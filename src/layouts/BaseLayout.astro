@@ -1,0 +1,35 @@
+---
+// Entre les --- c'est la partie serveur ou au build 
+import '../styles/global.css';
+const {
+  title = 'Portfolio | Fabien Barge',
+  description = 'Portfolio de Fabien Barge, développeur web et web mobile en formation, orienté front-end et back-end.',
+} = Astro.props;
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#020617" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/photoFabien.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/photoFabien.png" />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
+    <slot />
+
+    <script is:inline src="/script.js"></script>
+  </body>
+</html>

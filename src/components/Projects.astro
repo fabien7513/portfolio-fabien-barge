@@ -1,0 +1,180 @@
+---
+const featuredProject = {
+  eyebrow: 'Projet mis en avant',
+  title: 'Jeu du Morpion',
+  summary:
+    'Un projet que j’aime particulièrement parce qu’il m’a permis de travailler la logique JavaScript, la gestion des états de jeu et l’interaction avec le DOM.',
+  image: '/Morpion.png',
+  alt: 'Capture du jeu du Morpion',
+  role: 'Conception de l’interface, logique de jeu, mode joueur contre joueur et joueur contre ordinateur.',
+  highlights: [
+    'Organisation du code pour gérer les tours, les coups gagnants et la réinitialisation.',
+    'Manipulation du DOM pour refléter immédiatement chaque action du joueur.',
+    'Travail sur la clarté visuelle et l’expérience utilisateur sur un mini-jeu complet.',
+  ],
+};
+
+const projects = [
+  {
+    title: 'RogerVoice',
+    badge: 'HTML / CSS',
+    description:
+      'Création d’un site web de 4 pages en HTML/CSS inspiré de RogerVoice, avec une interface moderne, simple, lisible et responsive.',
+    technologies: 'HTML, CSS',
+    image: '/RogerVoice.png',
+    alt: 'Projet RogerVoice',
+  },
+  {
+    title: 'HTML & CSS expliqué',
+    badge: 'HTML / CSS',
+    description:
+      'Site éducatif de 4 pages conçu pour expliquer simplement le métier de développeur web et les bases du HTML, CSS et JavaScript.',
+    technologies: 'HTML, CSS',
+    image: '/HTML.png',
+    alt: 'Projet HTML et CSS expliqué',
+  },
+  {
+    title: 'Jeu du Morpion',
+    badge: 'JavaScript',
+    description:
+      'Développement d’un jeu de Morpion en JavaScript avec mode joueur contre joueur et joueur contre ordinateur.',
+    technologies: 'JavaScript',
+    image: '/Morpion.png',
+    alt: 'Jeu du Morpion',
+  },
+  {
+    title: 'Quiz interactif',
+    badge: 'JavaScript',
+    description:
+      'Application JavaScript avec questions aléatoires, validation immédiate des réponses et score final.',
+    technologies: 'JavaScript',
+    image: '/Quizz.png',
+    alt: 'Quiz interactif',
+  },
+  {
+    title: 'Calculatrice IMC',
+    badge: 'JavaScript',
+    description:
+      'Outil permettant de calculer l’IMC à partir du poids et de la taille, avec affichage du résultat et interprétation.',
+    technologies: 'JavaScript',
+    image: '/IMC.png',
+    alt: 'Calculatrice IMC',
+  },
+  {
+    title: 'To-do list',
+    badge: 'JavaScript',
+    description:
+      'Application permettant d’ajouter et supprimer des tâches simplement, avec manipulation du DOM et interactions utilisateur.',
+    technologies: 'JavaScript',
+    image: '/ToDoList.png',
+    alt: 'Application To-do list',
+  },
+  {
+    title: 'Click le clown',
+    badge: 'JavaScript',
+    description:
+      'Mini-jeu interactif en JavaScript basé sur le score, la rapidité et le déplacement aléatoire d’un élément à l’écran.',
+    technologies: 'JavaScript',
+    image: '/Clickleclown.png',
+    alt: 'Jeu Click le clown',
+  },
+];
+---
+
+<section id="projects">
+  <div class="section-heading">
+    <div>
+      <h2>Projets</h2>
+      <p class="section-text">
+        Voici une sélection de projets réalisés durant ma formation, mes exercices
+        pratiques et mes mises en situation de développement web.
+      </p>
+    </div>
+
+    <a
+      href="https://github.com/fabien7513"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="button button-secondary"
+    >
+      Voir mon GitHub
+    </a>
+  </div>
+
+  <article class="featured-project js-tilt-card" data-tilt-strength="4">
+    <div class="featured-project-media">
+      <img src={featuredProject.image} alt={featuredProject.alt} />
+    </div>
+
+    <div class="featured-project-content">
+      <p class="featured-project-eyebrow">{featuredProject.eyebrow}</p>
+      <h3>{featuredProject.title}</h3>
+      <p>{featuredProject.summary}</p>
+      <p><strong>Ce que j’y ai travaillé :</strong> {featuredProject.role}</p>
+
+      <ul class="featured-project-list">
+        {featuredProject.highlights.map((highlight) => (
+          <li>{highlight}</li>
+        ))}
+      </ul>
+    </div>
+  </article>
+
+  <div class="projects-grid">
+    {projects.map((project) => (
+      <article class="project-card js-tilt-card" data-tilt-strength="5">
+        <div class="project-card-depth project-depth-back"></div>
+        <div class="project-card-depth project-depth-front"></div>
+
+        <div class="project-visual">
+          <img src={project.image} alt={project.alt} />
+        </div>
+
+        <div class="project-content">
+          <div class="project-top">
+            <span class="project-badge">{project.badge}</span>
+            <h3>{project.title}</h3>
+          </div>
+
+          <p>{project.description}</p>
+
+          <p><strong>Technologies :</strong> {project.technologies}</p>
+
+          <div class="project-actions">
+            <button
+              type="button"
+              class="button button-primary open-modal"
+              data-title={project.title}
+              data-description={project.description}
+              data-image={project.image}
+              aria-controls="modal"
+              aria-haspopup="dialog"
+            >
+              Voir plus
+            </button>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<div id="modal" class="modal" aria-hidden="true">
+  <div
+    class="modal-content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    aria-describedby="modal-description"
+    tabindex="-1"
+  >
+    <button class="close-modal" type="button" aria-label="Fermer la fenêtre">
+      &times;
+    </button>
+
+    <img id="modal-image" src="" alt="" hidden />
+
+    <h3 id="modal-title"></h3>
+    <p id="modal-description"></p>
+  </div>
+</div>
