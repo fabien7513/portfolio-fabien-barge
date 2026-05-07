@@ -1,31 +1,45 @@
+---
+const aboutPillars = [
+  {
+    title: 'Ce que je recherche',
+    text: 'Une alternance, un stage ou un premier poste junior.',
+  },
+  {
+    title: 'Ce que j’aime construire',
+    text: 'Des interfaces claires, accessibles et utiles.',
+  },
+  {
+    title: 'Ce que j’apporte',
+    text: 'Rigueur, écoute et envie de progresser vite.',
+  },
+];
+---
+
 <section id="about">
-  <h2>À propos</h2>
+  <div class="section-heading">
+    <div>
+      <p class="section-eyebrow">À propos</p>
+      <h2>Un profil en reconversion vers le web.</h2>
+    </div>
+  </div>
 
   <div class="about-grid">
     <div class="about-text">
       <p>
-        Je suis actuellement en formation de développeur web et web mobile, avec
-        une approche à la fois front-end et back-end.
+        Je suis en formation développeur web et web mobile, avec une approche front-end et back-end.
       </p>
 
       <p>
-        J’aime concevoir des interfaces claires, modernes et accessibles, tout en
-        développant la logique applicative nécessaire au bon fonctionnement d’un projet web.
+        J’aime créer des interfaces claires et développer une logique simple, utile et bien structurée.
       </p>
 
       <p>
-        Mon objectif est de progresser dans un environnement concret, structuré et
-        formateur, afin de consolider mes compétences et contribuer à des projets utiles.
-      </p>
-
-      <p>
-        À travers mes projets, je travaille la structure du code, l’expérience utilisateur,
-        l’intégration visuelle et les premières logiques côté serveur.
+        Mon objectif est d’évoluer dans un cadre concret pour consolider mes compétences et contribuer rapidement.
       </p>
 
       <div class="about-actions">
         <a
-          href="/Fabien%20BARGE%20CV%20Developpement%20Web%20copie.pdf"
+          href="/cv-fabien-barge.pdf"
           class="button button-primary"
           target="_blank"
           rel="noopener noreferrer"
@@ -37,9 +51,19 @@
           Me contacter
         </a>
       </div>
+
+      <div class="about-pillars">
+        {aboutPillars.map((pillar) => (
+          <article class="about-pillar">
+            <h3>{pillar.title}</h3>
+            <p>{pillar.text}</p>
+          </article>
+        ))}
+      </div>
     </div>
 
-    <div class="about-card">
+    <div class="about-card js-tilt-card" data-tilt-strength="6">
+      <span class="about-card-badge">Profil</span>
       <div class="about-avatar">
         <img src="/photoFabien.png" alt="Photo de Fabien Barge" />
       </div>
@@ -48,7 +72,15 @@
         <p><strong>Nom :</strong> Fabien Barge</p>
         <p><strong>Formation :</strong> Développeur web et web mobile</p>
         <p><strong>Approche :</strong> Front-end & back-end</p>
-        <p><strong>Technologies :</strong> HTML, CSS, JavaScript, Twig, Express</p>
+      </div>
+
+      <div class="about-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Express</span>
+        <span>Twig</span>
+        <span>Git / GitHub</span>
       </div>
     </div>
   </div>

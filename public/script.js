@@ -2,6 +2,8 @@ const buttons = document.querySelectorAll(".open-modal");
 const modal = document.getElementById("modal");
 const title = document.getElementById("modal-title");
 const description = document.getElementById("modal-description");
+const meta = document.getElementById("modal-meta");
+const focus = document.getElementById("modal-focus");
 const image = document.getElementById("modal-image");
 const close = document.querySelector(".close-modal");
 const modalContent = modal?.querySelector(".modal-content");
@@ -9,7 +11,7 @@ const focusableSelector =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 let lastFocusedElement = null;
 
-if (buttons.length && modal && title && description && image && close && modalContent) {
+if (buttons.length && modal && title && description && meta && focus && image && close && modalContent) {
   const getFocusableElements = () =>
     Array.from(modalContent.querySelectorAll(focusableSelector)).filter(
       (element) => !element.hasAttribute("hidden"),
@@ -21,6 +23,12 @@ if (buttons.length && modal && title && description && image && close && modalCo
 
     title.textContent = button.dataset.title || "";
     description.textContent = button.dataset.description || "";
+    meta.textContent = [button.dataset.type, button.dataset.technologies]
+      .filter(Boolean)
+      .join(" • ");
+    focus.textContent = button.dataset.focus
+      ? `Focus : ${button.dataset.focus}`
+      : "";
 
     const imageSource = button.dataset.image || "";
     image.src = imageSource;
@@ -44,6 +52,8 @@ if (buttons.length && modal && title && description && image && close && modalCo
 
     title.textContent = "";
     description.textContent = "";
+    meta.textContent = "";
+    focus.textContent = "";
     image.src = "";
     image.alt = "";
     image.hidden = true;

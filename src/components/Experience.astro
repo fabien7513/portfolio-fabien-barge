@@ -1,32 +1,60 @@
+---
+const timeline = [
+  {
+    date: '2025 - 2026',
+    title: 'Formation Développeur Web & Web Mobile',
+    description:
+      'Montée en compétences front-end et back-end à travers des projets pratiques.',
+    label: 'Formation actuelle',
+  },
+  {
+    date: '2013',
+    title: 'Diplôme d\'État d\'Éducateur spécialisé',
+    description:
+      'Une expérience qui a renforcé l’écoute, l’adaptabilité et le travail en équipe.',
+    label: 'Expérience humaine',
+  },
+  {
+    date: '2008',
+    title: 'Baccalauréat Professionnel Technicien d’Usinage',
+    description:
+      'Une base technique qui nourrit encore ma rigueur et mon sens de la méthode.',
+    label: 'Base technique',
+  },
+];
+
+const experienceNotes = [
+  'Rigueur',
+  'Adaptabilité',
+  'Esprit d’équipe',
+];
+---
+
 <section id="experience">
-  <h2>Parcours & formations</h2>
+  <div class="section-heading">
+    <div>
+      <p class="section-eyebrow">Parcours</p>
+      <h2>Un parcours qui m’a mené vers le développement web.</h2>
+      <p class="section-text">
+        Les grandes étapes qui structurent aujourd’hui ma façon de travailler.
+      </p>
+    </div>
+  </div>
+
+  <div class="experience-notes">
+    {experienceNotes.map((note) => (
+      <span>{note}</span>
+    ))}
+  </div>
 
   <div class="timeline">
-    <div class="timeline-item">
-      <p class="timeline-date">2025 - 2026</p>
-      <h3>Formation Développeur Web & Web Mobile</h3>
-      <p>
-        Apprentissage du développement front-end et back-end à travers des
-        projets pratiques et la mise en œuvre d’applications web.
-      </p>
-    </div>
-
-    <div class="timeline-item">
-      <p class="timeline-date">2013</p>
-      <h3>Diplôme d'État d'Éducateur spécialisé</h3>
-      <p>
-        Un parcours qui m’a permis de développer l’écoute, l’adaptabilité et le
-        sens du travail en équipe.
-      </p>
-    </div>
-
-    <div class="timeline-item">
-      <p class="timeline-date">2008</p>
-      <h3>Baccalauréat Professionnel Technicien d’Usinage</h3>
-      <p>
-        Première formation technique qui participe aujourd’hui à ma rigueur et à
-        mon approche structurée.
-      </p>
-    </div>
+    {timeline.map((item) => (
+      <article class="timeline-item js-tilt-card" data-tilt-strength="4">
+        <span class="timeline-label">{item.label}</span>
+        <p class="timeline-date">{item.date}</p>
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+      </article>
+    ))}
   </div>
 </section>
