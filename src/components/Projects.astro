@@ -1,4 +1,6 @@
 ---
+const githubProfileUrl = 'https://github.com/fabien7513';
+
 const featuredProject = {
   eyebrow: 'Projet mis en avant',
   title: 'Jeu du Morpion',
@@ -7,13 +9,12 @@ const featuredProject = {
   image: '/Morpion.png',
   alt: 'Capture du jeu du Morpion',
   badge: 'Logique JavaScript',
-  role: 'Conception de l’interface, logique de jeu, mode joueur contre joueur et joueur contre ordinateur.',
-  results: ['Gestion des états de jeu', 'Interaction DOM immédiate', 'Mode IA simple'],
-  highlights: [
-    'Organisation du code pour gérer les tours, les coups gagnants et la réinitialisation.',
-    'Manipulation du DOM pour refléter immédiatement chaque action du joueur.',
-    'Travail sur la clarté visuelle et l’expérience utilisateur sur un mini-jeu complet.',
-  ],
+  type: 'Mini-jeu',
+  technologies: 'JavaScript',
+  focus: 'Logique de jeu, états et interactions DOM.',
+  repository: githubProfileUrl,
+  note:
+    'J’y ai travaillé la logique de jeu, la mise à jour du DOM et une expérience simple mais claire.',
 };
 
 const projects = [
@@ -27,6 +28,7 @@ const projects = [
     focus: 'Intégration multi-pages, hiérarchie visuelle et responsive.',
     image: '/RogerVoice.png',
     alt: 'Projet RogerVoice',
+    repository: githubProfileUrl,
   },
   {
     title: 'HTML & CSS expliqué',
@@ -38,6 +40,7 @@ const projects = [
     focus: 'Pédagogie, structure éditoriale et lisibilité.',
     image: '/HTML.png',
     alt: 'Projet HTML et CSS expliqué',
+    repository: githubProfileUrl,
   },
   {
     title: 'Jeu du Morpion',
@@ -49,6 +52,7 @@ const projects = [
     focus: 'Logique de jeu, états et interactions DOM.',
     image: '/Morpion.png',
     alt: 'Jeu du Morpion',
+    repository: githubProfileUrl,
   },
   {
     title: 'Quiz interactif',
@@ -60,6 +64,7 @@ const projects = [
     focus: 'Conditions, score, feedback utilisateur et navigation.',
     image: '/Quizz.png',
     alt: 'Quiz interactif',
+    repository: githubProfileUrl,
   },
   {
     title: 'Calculatrice IMC',
@@ -71,6 +76,7 @@ const projects = [
     focus: 'Récupération de données utilisateur et affichage conditionnel.',
     image: '/IMC.png',
     alt: 'Calculatrice IMC',
+    repository: githubProfileUrl,
   },
   {
     title: 'To-do list',
@@ -82,6 +88,7 @@ const projects = [
     focus: 'Gestion d’actions utilisateur et mise à jour dynamique de l’interface.',
     image: '/ToDoList.png',
     alt: 'Application To-do list',
+    repository: githubProfileUrl,
   },
   {
     title: 'Click le clown',
@@ -93,6 +100,7 @@ const projects = [
     focus: 'Timing, score et animation d’un élément interactif.',
     image: '/Clickleclown.png',
     alt: 'Jeu Click le clown',
+    repository: githubProfileUrl,
   },
 ];
 ---
@@ -104,110 +112,71 @@ const projects = [
       <h2>Quelques projets pour apprendre et progresser.</h2>
       <p class="section-text">
         Voici une sélection de projets réalisés durant ma formation, mes exercices
-        pratiques et mes mises en situation de développement web.
+        pratiques et mes mises en situation de développement web. J’ai volontairement
+        gardé une présentation simple pour laisser la place à l’essentiel.
       </p>
     </div>
 
-    <a
-      href="https://github.com/fabien7513"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="button button-secondary"
-    >
+    <a href={githubProfileUrl} target="_blank" rel="noopener noreferrer" class="button button-secondary">
       Voir mon GitHub
     </a>
   </div>
 
-  <article class="featured-project js-tilt-card" data-tilt-strength="4">
+  <a
+    href={featuredProject.repository}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="featured-project project-link-card js-tilt-card"
+    data-tilt-strength="4"
+    aria-label={`Voir le code du projet ${featuredProject.title} sur GitHub`}
+  >
     <div class="featured-project-media">
       <img src={featuredProject.image} alt={featuredProject.alt} />
     </div>
 
     <div class="featured-project-content">
       <p class="featured-project-eyebrow">{featuredProject.eyebrow}</p>
-      <h3>{featuredProject.title}</h3>
-      <div class="featured-project-tags">
-        <span>{featuredProject.badge}</span>
-        {featuredProject.results.map((result) => (
-          <span>{result}</span>
-        ))}
+      <div class="featured-project-header">
+        <h3>{featuredProject.title}</h3>
+        <span class="project-badge">{featuredProject.badge}</span>
       </div>
       <p>{featuredProject.summary}</p>
-      <p><strong>Ce que j’y ai travaillé :</strong> {featuredProject.role}</p>
+      <p class="featured-project-note">{featuredProject.note}</p>
 
-      <ul class="featured-project-list">
-        {featuredProject.highlights.map((highlight) => (
-          <li>{highlight}</li>
-        ))}
-      </ul>
+      <span class="project-link-label">Voir le code sur GitHub</span>
     </div>
-  </article>
+  </a>
 
   <div class="projects-grid">
-    {projects.map((project, index) => (
-      <article class="project-card js-tilt-card" data-tilt-strength="5">
-        <div class="project-card-depth project-depth-back"></div>
-        <div class="project-card-depth project-depth-front"></div>
-
+    {projects.map((project) => (
+      <a
+        href={project.repository}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="project-card project-link-card js-tilt-card"
+        data-tilt-strength="3"
+        aria-label={`Voir le code du projet ${project.title} sur GitHub`}
+      >
         <div class="project-visual">
           <img src={project.image} alt={project.alt} />
         </div>
 
         <div class="project-content">
-          <div class="project-top">
-            <span class="project-index">0{index + 1}</span>
+          <div class="project-meta-line">
             <span class="project-badge">{project.badge}</span>
+            <span class="project-type">{project.type}</span>
+          </div>
+
+          <div class="project-top">
             <h3>{project.title}</h3>
-            <p class="project-type">{project.type}</p>
           </div>
 
-          <p>{project.description}</p>
+          <p class="project-description">{project.description}</p>
+          <p class="project-focus">{project.focus}</p>
 
-          <div class="project-meta">
-            <p><strong>Technologies :</strong> {project.technologies}</p>
-            <p><strong>Focus :</strong> {project.focus}</p>
-          </div>
-
-          <div class="project-actions">
-            <button
-              type="button"
-              class="button button-primary open-modal"
-              data-title={project.title}
-              data-description={project.description}
-              data-image={project.image}
-              data-technologies={project.technologies}
-              data-focus={project.focus}
-              data-type={project.type}
-              aria-controls="modal"
-              aria-haspopup="dialog"
-            >
-              Voir plus
-            </button>
-          </div>
+          <span class="project-link-label">Voir le code sur GitHub</span>
         </div>
-      </article>
+      </a>
     ))}
   </div>
 </section>
-
-<div id="modal" class="modal" aria-hidden="true">
-  <div
-    class="modal-content"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-title"
-    aria-describedby="modal-description"
-    tabindex="-1"
-  >
-    <button class="close-modal" type="button" aria-label="Fermer la fenêtre">
-      &times;
-    </button>
-
-    <img id="modal-image" src="" alt="" hidden />
-
-    <p id="modal-meta" class="modal-meta"></p>
-    <h3 id="modal-title"></h3>
-    <p id="modal-description"></p>
-    <p id="modal-focus" class="modal-focus"></p>
-  </div>
-</div>
